@@ -7,10 +7,11 @@
  */
 import { reactive, onMounted } from "vue";
 import { headerTbale } from "@/store/tableDate";
-import zhCn from 'element-plus/es/locale/lang/zh-cn';
+import zhCn from "element-plus/es/locale/lang/zh-cn";
 let props = defineProps(["date"]); //接收父组件传来的数据
 console.log(props.date);
 const information = reactive({
+  loadingtype: false,
   page: 1, //页码
   size: 10, //默认多少条
   total: 0, //总条数
@@ -43,8 +44,9 @@ const getList = (type, state) => {
           ...props?.date?.apiState,
           ...state,
         };
+  information.loadingtype = true;
   props?.date?.api(apidate).then((result) => {
-    console.log(result, "rrwrwrwrwrwr");
+    information.loadingtype = false;
     if (result.code == 200) {
       information.tableData = result?.data?.rows;
       information.total = result?.data?.total;
@@ -68,6 +70,8 @@ defineExpose({
 </script>
 <template>
   <el-table
+    v-loading="information.loadingtype"
+    element-loading-text="拼命加载中..."
     :border="props?.date?.border"
     :max-height="props?.date?.maxHeight"
     :data="information.tableData"
