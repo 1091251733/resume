@@ -1,0 +1,68 @@
+<script setup>
+import { reactive } from "vue";
+const data = reactive({
+  showDialog: false,
+});
+const openShow = (val) => {
+  data.showDialog = val;
+};
+//暴露方法给父组件
+defineExpose({
+    openShow
+})
+</script>
+
+<template>
+  <div
+    :class="'dialog-overlay ' + (data.showDialog ? 'show' : 'hide')"
+    @click="openShow(false)"
+  >
+    <div
+      :class="'dialog-content ' + (data.showDialog ? 'slide-in' : 'slide-out')"
+    >
+      <!-- 使用插槽接收父组件传来的内容 -->
+      <slot></slot>
+    </div>
+  </div>
+</template>
+<style scoped>
+.dialog-overlay {
+  position: fixed;
+  top: 0;
+  left: 0;
+  right: 0;
+  bottom: 0;
+  background: rgba(0, 0, 0, 0.5);
+  transition: opacity 0.3s ease;
+  opacity: 0;
+  visibility: hidden;
+  z-index: 8;
+}
+
+.dialog-overlay.show {
+  opacity: 1;
+  visibility: visible;
+}
+
+.dialog-overlay.hide {
+  opacity: 0;
+  visibility: hidden;
+}
+
+.dialog-content {
+  width: 42%; /* 宽度为手机屏幕的一半 */
+  height: 100vh; /* 高度撑满屏幕 */
+  background-color: white;
+  overflow-y: auto;
+  position: relative;
+  transition: transform 0.3s ease;
+}
+
+.dialog-content.slide-in {
+  transform: translateX(0); /* 从屏幕左侧滑入 */
+}
+
+.dialog-content.slide-out {
+  transform: translateX(-100%); /* 滑出屏幕 */
+}
+</style>
