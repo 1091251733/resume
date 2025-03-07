@@ -8,9 +8,9 @@ export const register = (data) => {
   return request("POST", "/v1/register", data);
 };
 
-export const getTransactionDetails = (data) => {
+export const queryOrderList = (data) => {
   //表格
-  return request("POST", "/aliyun/cloud/page", data);
+  return request("GET", "/queryOrderList", data);
 };
 
 export const moneyList = (data) => {

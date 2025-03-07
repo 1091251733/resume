@@ -22,8 +22,8 @@ export default function request(method, url, data, dataType, returnType) {
   let config = {
     method,
     headers: {
-      Authorization: "bearer " + useBeginStore().token,
-      // Token: useTokenStore.getState().token,
+      // Authorization: "bearer " + useBeginStore().token,
+      token: useBeginStore().token,
     },
   };
   if (!["GET", "DELETE"].includes(method)) {
