@@ -10,7 +10,7 @@ export const register = (data) => {
 
 export const queryOrderList = (data) => {
   //表格
-  return request("GET", "/queryOrderList", data);
+  return request("GET", "/integral", data);
 };
 
 export const moneyList = (data) => {

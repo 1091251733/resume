@@ -7,7 +7,7 @@ import Molde from "@/components/Molde.vue";
 const MoldeDom = ref(null); //弹窗组件
 const TableDom = ref(null); //表格DOM
 const data = reactive({
-  order_sn: "", //查询
+  username: "", //查询
 });
 const openShow = () => {
   MoldeDom?.value?.popupstate(true);
@@ -17,8 +17,15 @@ const confirm = () => {
   console.log("我被子组件调用了");
 };
 const searchresult = (type) => {
-  console.log(TableDom.value);
+  // console.log(TableDom.value);
+  if (type == "重置") {
+    data.username = "";
+  }
   TableDom.value.getList(type, data);
+};
+const batchfun = () => {
+  //批量删除查看选中后的数据
+  console.log(TableDom.value.selectedRowKeys, "tababa");
 };
 </script>
 <template>
@@ -43,16 +50,20 @@ const searchresult = (type) => {
     </div> -->
   </Molde>
   <!-- 封装表格 -->
-  <el-input v-model="data.order_sn" />
+  <el-input v-model="data.username" />
   <el-button @click="searchresult('查询')">查询</el-button>
   <el-button @click="searchresult('重置')">重置</el-button>
+  <el-button @click="batchfun">批量删除</el-button>
   <TableView
     ref="TableDom"
     :date="{
       headerTbale,
-      maxHeight: '200',
       border: true,
       api: queryOrderList,
+      apiState: {
+        id: '1',
+      },
+      multiplechoice: '单选',
     }"
   >
     <el-table-column fixed label="操作">

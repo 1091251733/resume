@@ -1,10 +1,6 @@
 export const headerTbale = [
   {
-    prop: "date",
-    label: "时间",
-  },
-  {
-    prop: "name",
+    prop: "username",
     label: "名字",
   },
   {

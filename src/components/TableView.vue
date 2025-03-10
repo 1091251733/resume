@@ -3,27 +3,34 @@
  * maxHeight  表格最大高度 string
  * border  是否边框表格 boolean
  * headerTbale  表格标题数据
+ * multiplechoice  表格多选与单选配置
  * apiState   后端需要的默认值
+ *
  */
-import { reactive, onMounted } from "vue";
+import { reactive, onMounted, ref } from "vue";
 import { headerTbale } from "@/store/tableDate";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 let props = defineProps(["date"]); //接收父组件传来的数据
-console.log(props.date);
+const selectedRowKeys = ref(null); //多选或单选选中后
 const information = reactive({
   loadingtype: false,
   page: 1, //页码
   size: 10, //默认多少条
   total: 0, //总条数
   tableData: [], //表格数据
+  demandDate: {}, //查询数据
 });
 onMounted(() => {
   getList();
 });
 const getList = (type, state) => {
   //初始化表格数据  //更具项目不同更改不同参数
-  if (type == "查询" || type == "重置") {
+  if (type == "重置") {
     information.page = 1;
+    information.demandDate = {};
+  } else if (type == "查询") {
+    information.page = 1;
+    information.demandDate = { ...state };
   }
   const apidate =
     type == "查询"
@@ -42,7 +49,7 @@ const getList = (type, state) => {
           pageNum: information.page,
           pageSize: information.size,
           ...props?.date?.apiState,
-          ...state,
+          ...information.demandDate,
         };
   information.loadingtype = true;
   props?.date?.api(apidate).then((result) => {
@@ -55,29 +62,46 @@ const getList = (type, state) => {
 };
 const handleSizeChange = (value) => {
   //点击切换每页多少条
-  console.log(value, "vlsvlsvlslv");
+  //   console.log(value, "vlsvlsvlslv");
+  getList();
   information.size = value;
   information.page = 1;
 };
 const handleCurrentChange = (value) => {
   //点击翻页
-  console.log(value, "handleCurrentChange");
+  //   console.log(value, "handleCurrentChange");
+  getList();
   information.page = value;
+};
+const handleSelectionChange = (value) => {
+  //   console.log(value, "vlvalvlalval", props?.date?.multiplechoice);
+  if (props?.date?.multiplechoice) {
+    selectedRowKeys.value = { ...value };
+  }
 };
 defineExpose({
   getList,
+  selectedRowKeys,
 });
 </script>
 <template>
   <el-table
+    @selection-change="handleSelectionChange"
+    @current-change="handleSelectionChange"
     v-loading="information.loadingtype"
     element-loading-text="拼命加载中..."
     :border="props?.date?.border"
-    :max-height="props?.date?.maxHeight"
+    :max-height="props?.date?.maxHeight ? props?.date?.maxHeight : '65vh'"
     :data="information.tableData"
+    :highlight-current-row="
+      props?.date?.multiplechoice == '单选' ? true : false
+    "
   >
     <!-- 选择列 -->
-    <el-table-column type="selection" />
+    <el-table-column
+      v-if="props?.date?.multiplechoice == '多选'"
+      type="selection"
+    />
     <slot></slot>
     <!-- 动态生成列 -->
     <el-table-column
@@ -99,16 +123,18 @@ defineExpose({
     </el-table-column>
   </el-table>
   <el-config-provider :locale="zhCn">
-    <el-pagination
-      v-model:current-page="information.page"
-      v-model:page-size="information.size"
-      :page-sizes="[10, 20, 50, 100]"
-      background
-      layout="total, sizes, prev, pager, next, jumper"
-      :total="information.total"
-      @size-change="handleSizeChange"
-      @current-change="handleCurrentChange"
-    />
+    <div class="flex justify-center mt-[30px]">
+      <el-pagination
+        v-model:current-page="information.page"
+        v-model:page-size="information.size"
+        :page-sizes="[10, 20, 50, 100]"
+        background
+        layout="total, sizes, prev, pager, next, jumper"
+        :total="information.total"
+        @size-change="handleSizeChange"
+        @current-change="handleCurrentChange"
+      />
+    </div>
   </el-config-provider>
 </template>
 <style>
