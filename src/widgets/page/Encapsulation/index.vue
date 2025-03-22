@@ -29,7 +29,6 @@ const batchfun = () => {
 };
 </script>
 <template>
-  <div @click="openShow">封装表格-打开弹窗</div>
   <Molde
     :date="{
       title: '标题',
@@ -49,6 +48,7 @@ const batchfun = () => {
       <el-button type="warning"> 确定 </el-button>
     </div> -->
   </Molde>
+  <el-button @click="openShow">封装表格-打开弹窗</el-button>
   <!-- 封装表格 -->
   <el-input v-model="data.username" />
   <el-button @click="searchresult('查询')">查询</el-button>
@@ -57,13 +57,13 @@ const batchfun = () => {
   <TableView
     ref="TableDom"
     :date="{
+      multiplechoice: '单选',
       headerTbale,
       border: true,
       api: queryOrderList,
       apiState: {
         id: '1',
       },
-      multiplechoice: '单选',
     }"
   >
     <el-table-column fixed label="操作">

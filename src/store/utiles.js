@@ -1,5 +1,29 @@
 import { ref, onMounted, onUnmounted } from "vue";
 
+// 防抖
+export function debounce(func, delay = 3000) {
+  let timer;
+  return function (...args) {
+    if (timer) {
+      clearTimeout(timer);
+    }
+    timer = setTimeout(() => {
+      func.apply(this, args);
+    }, delay);
+  };
+}
+// 节流
+export function throttle(func, delay = 3000) {
+  let timeout;
+  return function (...args) {
+    if (!timeout) {
+      timeout = setTimeout(() => {
+        timeout = undefined;
+        func.apply(this, args);
+      }, delay);
+    }
+  };
+}
 
 // 封装监听页面宽度的函数
 export function useWindowWidth() {

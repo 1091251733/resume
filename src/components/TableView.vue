@@ -1,16 +1,18 @@
 <script setup>
 /**
- * maxHeight  表格最大高度 string
- * border  是否边框表格 boolean
- * headerTbale  表格标题数据
+ * maxHeight       表格最大高度 string
+ * border          是否边框表格 boolean
+ * headerTbale     表格标题数据
  * multiplechoice  表格多选与单选配置
- * apiState   后端需要的默认值
+ * apiState        后端需要的默认值
  *
  */
 import { reactive, onMounted, ref } from "vue";
 import { headerTbale } from "@/store/tableDate";
+import { useWindowWidth } from "@/store/utiles";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 let props = defineProps(["date"]); //接收父组件传来的数据
+const windowWidth = useWindowWidth(); //监听页面宽度
 const selectedRowKeys = ref(null); //多选或单选选中后
 const information = reactive({
   loadingtype: false,
@@ -69,7 +71,7 @@ const handleSizeChange = (value) => {
 };
 const handleCurrentChange = (value) => {
   //点击翻页
-  //   console.log(value, "handleCurrentChange");
+  //console.log(value, "handleCurrentChange");
   getList();
   information.page = value;
 };
@@ -128,8 +130,12 @@ defineExpose({
         v-model:current-page="information.page"
         v-model:page-size="information.size"
         :page-sizes="[10, 20, 50, 100]"
-        background
-        layout="total, sizes, prev, pager, next, jumper"
+        :background="windowWidth < 600 ? false : true"
+        :layout="
+          windowWidth > 1000
+            ? 'total, sizes, prev, pager, next, jumper'
+            : '  prev, pager, next'
+        "
         :total="information.total"
         @size-change="handleSizeChange"
         @current-change="handleCurrentChange"

@@ -10,7 +10,7 @@
  * @confirm="confirm"  父组件传来确认函数
  * footer   底部组件是否展示
  */
-import { ref, defineEmits } from "vue";
+import { ref } from "vue";
 const emit = defineEmits(); // 定义 emit 事件(准备调用父组件方法)
 const dialogVisible = ref(false);
 const popupstate = (val) => {

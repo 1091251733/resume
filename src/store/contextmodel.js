@@ -9,11 +9,12 @@ const lasting = {
   loginInformation: {}, // 登录信息
   token: "", // 登录 token
   menuOption: "", // 菜单选项
+  ceshiDate:'测试本地数据~'
 };
 
 // 非持久化状态
 const perishability = {
-  strongDom: "",
+  strongDom: "非持久化测试",
 };
 
 // 持久化 Store
@@ -28,6 +29,7 @@ export const useBeginStore = create(
         setDisclosedBallot: (val) => set({ disclosedBallot: val }),
         setLoginInformation: (val) => set({ loginInformation: val }),
         setMenuOption: (val) => set({ menuOption: val }),
+        setceshiDate: (val) => set({ ceshiDate: val }),
       }),
       {
         name: "begin-store", // localStorage 中的键名

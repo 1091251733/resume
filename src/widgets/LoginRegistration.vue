@@ -154,24 +154,28 @@ const goLogin = () => {
             />
           </div>
           <div class="codep">
-            <el-input
-              size="large"
-              type="password"
-              style="height: 50px"
-              v-model="data.password"
-              show-password
-              :placeholder="`请输入${data.type}密码`"
-            />
+            <el-form>
+              <el-input
+                size="large"
+                type="password"
+                style="height: 50px"
+                v-model="data.password"
+                show-password
+                :placeholder="`请输入${data.type}密码`"
+              />
+            </el-form>
           </div>
           <div v-show="data.type == '注册'" class="codep">
-            <el-input
-              size="large"
-              type="password"
-              style="height: 50px"
-              v-model="data.affirmpss"
-              show-password
-              :placeholder="`请再次输入${data.type}密码`"
-            />
+            <el-form>
+              <el-input
+                size="large"
+                type="password"
+                style="height: 50px"
+                v-model="data.affirmpss"
+                show-password
+                :placeholder="`请再次输入${data.type}密码`"
+              />
+            </el-form>
           </div>
           <br />
           <div class="flex justify-between">
@@ -204,7 +208,7 @@ const goLogin = () => {
     </li>
   </ul>
 </template>
-<style >
+<style>
 @-webkit-keyframes slide-in-bottom {
   0% {
     -webkit-transform: translateY(1000px);
