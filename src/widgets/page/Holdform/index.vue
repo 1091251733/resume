@@ -1,8 +1,16 @@
 <script setup>
-import { ref, onMounted } from "vue";
+import { ref, reactive, onMounted, computed } from "vue";
 import FromDom from "@/components/FromDom.vue";
 import { useBeginStore, useBearStore } from "@/store/contextmodel";
-const FromArr = [
+
+const formDomRef = ref(null);
+const beginStore = useBeginStore(); //本地存储
+const nonLocal = useBearStore(); //非本地存储
+const date = reactive({
+  seletctDate: [], //选择数据
+});
+const FromArr = computed(() => [
+  //使用计算属性可以保持数据options: date?.seletctDate为响应式数据
   {
     name: "kaiguan",
     label: "开关",
@@ -12,14 +20,14 @@ const FromArr = [
     name: "timer",
     label: "时间选择",
     component: "el-date-picker",
-    rules: [{ required: true, message: "请选择" }], //是否必填/验证未通过提示
+    rules: [{ required: true, message: "请选择" }], ///验证未通过提示
     placeholder: "请选择内容",
   },
   {
     name: "numInput",
     label: "数字输入框",
     component: "el-input-number",
-    rules: [{ required: true, message: "请输入" }], //是否必填/验证未通过提示
+    rules: [{ required: true, message: "请输入" }], ///验证未通过提示
     placeholder: "请输入内容",
   },
   {
@@ -67,17 +75,7 @@ const FromArr = [
     name: "mysleect", //表单验证后双向绑定的数据字段
     label: "下拉选择",
     component: "el-select", // 传递 element 的组件
-    options: [
-      //下拉选择数据
-      {
-        value: "Option1",
-        label: "Option1",
-      },
-      {
-        value: "Option2",
-        label: "Option2",
-      },
-    ],
+    options: date?.seletctDate,
     rules: [{ required: true, message: "请选择" }],
     placeholder: "请输入内容",
   },
@@ -86,17 +84,7 @@ const FromArr = [
     label: "单选",
     component: "el-radio-group",
     rules: [{ required: true, message: "选择" }],
-    options: [
-      //下拉选择数据
-      {
-        value: "Option1",
-        label: "Option1",
-      },
-      {
-        value: "Option2",
-        label: "Option2",
-      },
-    ],
+    options: date?.seletctDate,
   },
   {
     name: "checkType",
@@ -106,19 +94,16 @@ const FromArr = [
     options: [
       //下拉选择数据
       {
-        value: "Option34",
-        label: "Option34",
+        value: "选择1",
+        label: "选择1",
       },
       {
-        value: "Option29",
-        label: "Option29",
+        value: "选择2",
+        label: "选择2",
       },
     ],
   },
-];
-const formDomRef = ref(null);
-const beginStore = useBeginStore(); //本地存储
-const nonLocal = useBearStore(); //非本地存储
+]);
 onMounted(() => {
   setTimeout(() => {
     //模拟请求表单赋值
@@ -133,6 +118,17 @@ onMounted(() => {
       radioType: "Option2",
       checkType: ["Option34"], // 多选示例
     });
+    date.seletctDate = [
+      {
+        value: "Option34",
+        label: "Option34",
+      },
+      {
+        value: "Option29",
+        label: "Option29",
+      },
+    ];
+    console.log(FromArr, "ddddd");
   }, 1000);
 });
 const submit = (val) => {
@@ -156,6 +152,7 @@ const setStore = () => {
 };
 </script>
 <template>
+  <p @click="console.log(FromArr, 'FromArrFromArr')">查看数据</p>
   <el-button @click="setStore">改变状态机</el-button>
   <p>状态机本地存储：{{ beginStore?.ceshiDate }}</p>
   <p>状态机非本地存储：{{ nonLocal?.strongDom }}</p>
