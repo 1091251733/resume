@@ -4,7 +4,9 @@ import TableView from "@/components/TableView.vue";
 import { headerTbale } from "@/store/tableDate";
 import { queryOrderList } from "@/api/useApi";
 import Molde from "@/components/Molde.vue";
+import { debounce, throttle } from "@/store/utiles";
 import FromDom from "@/components/FromDom.vue";
+import { ElMessage, ElMessageBox } from "element-plus";
 const formDomRef = ref(null); //查询表单组件
 const MoldeDom = ref(null); //弹窗组件
 const TableDom = ref(null); //表格DOM
@@ -52,9 +54,31 @@ const FromArr = [
 const data = reactive({
   username: "", //查询
 });
-const openShow = () => {
+const openShow = debounce(() => {
+  console.log("防抖");
   MoldeDom?.value?.popupstate(true);
-};
+}, 500);
+const open = throttle(() => {
+  console.log("节流");
+  ElMessageBox.confirm("是否继续操作?", "Warning", {
+    confirmButtonText: "OK",
+    cancelButtonText: "Cancel",
+    type: "warning",
+  })
+    .then(() => {
+      ElMessage({
+        type: "success",
+        message: "okok",
+      });
+    })
+    .catch(() => {
+      ElMessage({
+        type: "info",
+        message: "e'w're'w'r'wewrewrw",
+      });
+    });
+}, 500);
+
 const confirm = () => {
   //弹窗确定函数
   console.log("我被子组件调用了");
@@ -105,7 +129,8 @@ const resetForm = (val) => {
       <el-button type="warning"> 确定 </el-button>
     </div> -->
   </Molde>
-  <el-button @click="openShow">封装表格-打开弹窗</el-button>
+  <el-button @click="openShow">打开弹窗（防抖）</el-button>
+  <el-button @click="open">节流</el-button>
   <!-- 封装表格 -->
   <el-input v-model="data.username" />
   <el-button @click="searchresult('查询')">查询</el-button>
