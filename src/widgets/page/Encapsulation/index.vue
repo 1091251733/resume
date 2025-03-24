@@ -4,8 +4,51 @@ import TableView from "@/components/TableView.vue";
 import { headerTbale } from "@/store/tableDate";
 import { queryOrderList } from "@/api/useApi";
 import Molde from "@/components/Molde.vue";
+import FromDom from "@/components/FromDom.vue";
+const formDomRef = ref(null); //查询表单组件
 const MoldeDom = ref(null); //弹窗组件
 const TableDom = ref(null); //表格DOM
+const FromArr = [
+  {
+    name: "username",
+    label: "输入框",
+    component: "el-input", // 传递 element 的组件
+    class: " mr-[10px] ", //可设置自定义类名
+    width: "200px", //定义宽度
+    placeholder: "请输入内容",
+  },
+  {
+    name: "mysleect", //表单验证后双向绑定的数据字段
+    label: "下拉选择",
+    component: "el-select", // 传递 element 的组
+    width: "130px", //定义宽度
+    class: " mr-[10px] ", //可设置自定义类名
+    options: [
+      {
+        value: "Option34",
+        label: "Option34",
+      },
+      {
+        value: "Option29",
+        label: "Option29",
+      },
+    ],
+  },
+  {
+    name: "dateRange",
+    label: "日期范围",
+    component: "el-date-picker",
+    width: "230px", //定义宽度
+    class: " mr-[10px] ", //可设置自定义类名
+    props: {
+      type: "daterange",
+      "range-separator": "至",
+      "start-placeholder": "开始日期",
+      "end-placeholder": "结束日期",
+      "value-format": "YYYY-MM-DD",
+    },
+  },
+];
 const data = reactive({
   username: "", //查询
 });
@@ -26,6 +69,20 @@ const searchresult = (type) => {
 const batchfun = () => {
   //批量删除查看选中后的数据
   console.log(TableDom.value.selectedRowKeys, "tababa");
+};
+const submit = (val) => {
+  //提交验证成功通过后函数
+  console.log({ ...val }, "vlavlavla");
+  TableDom.value.getList("查询", { ...val }); //查询表格数据
+};
+const resetForm = (val) => {
+  //取消与确认函数
+  if (val == "重置") {
+    formDomRef.value?.resetForm();
+    TableDom.value.getList("重置", {}); //查询表格数据
+  } else {
+    formDomRef.value?.handleSubmit();
+  }
 };
 </script>
 <template>
@@ -54,6 +111,18 @@ const batchfun = () => {
   <el-button @click="searchresult('查询')">查询</el-button>
   <el-button @click="searchresult('重置')">重置</el-button>
   <el-button @click="batchfun">批量删除</el-button>
+  <FromDom
+    ref="formDomRef"
+    class="flex items-end flex-wrap"
+    :FromArr="FromArr"
+    :position="'top'"
+    @submit="submit"
+  >
+    <div class="flex justify-center w-full">
+      <el-button @click="resetForm('重置')">重置</el-button>
+      <el-button type="primary" @click="resetForm">查询</el-button>
+    </div>
+  </FromDom>
   <TableView
     ref="TableDom"
     :date="{

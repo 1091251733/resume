@@ -12,7 +12,8 @@
         v-model="formData[field.name]"
         v-bind="field.props || {}"
         :placeholder="field.placeholder"
-        :style="{ width: field.width || '100%' }"
+        :style="{width : field.width || '100%' }"
+        :class="field.class" 
       >
         <template v-if="field.component == 'el-select'">
           <el-option

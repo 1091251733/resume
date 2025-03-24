@@ -8,8 +8,8 @@ const openShow = (val) => {
 };
 //暴露方法给父组件
 defineExpose({
-    openShow
-})
+  openShow,
+});
 </script>
 
 <template>
@@ -19,6 +19,7 @@ defineExpose({
   >
     <div
       :class="'dialog-content ' + (data.showDialog ? 'slide-in' : 'slide-out')"
+      @click.stop
     >
       <!-- 使用插槽接收父组件传来的内容 -->
       <slot></slot>

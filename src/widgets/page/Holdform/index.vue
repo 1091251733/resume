@@ -106,18 +106,7 @@ const FromArr = computed(() => [
 ]);
 onMounted(() => {
   setTimeout(() => {
-    //模拟请求表单赋值
-    formDomRef?.value?.setFormData({
-      kaiguan: true,
-      timer: "2025-03-22",
-      numInput: 25,
-      username: "输入输入",
-      password: "123456",
-      dateRange: ["2025-01-02", "2025-02-22"],
-      mysleect: "Option1",
-      radioType: "Option2",
-      checkType: ["Option34"], // 多选示例
-    });
+    //模拟请求下拉赋值
     date.seletctDate = [
       {
         value: "Option34",
@@ -128,7 +117,18 @@ onMounted(() => {
         label: "Option29",
       },
     ];
-    console.log(FromArr, "ddddd");
+    //模拟请求表单赋值、
+    formDomRef?.value?.setFormData({
+      kaiguan: true,
+      timer: "2025-03-22",
+      numInput: 25,
+      username: "输入输入",
+      password: "123456",
+      dateRange: ["2025-01-02", "2025-02-22"],
+      mysleect: "Option1",
+      radioType: "Option34",
+      checkType: ["选择2"], // 多选示例
+    });
   }, 1000);
 });
 const submit = (val) => {
