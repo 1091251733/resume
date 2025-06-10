@@ -164,13 +164,13 @@ const resetForm = (val) => {
   >
     <el-table-column fixed label="操作">
       <template #default="{ row }">
-        <el-tag
-          class="tag-item"
-          type="primary"
+        <el-button
+          type="success"
+          size="small"
           @click="console.log(row, 'rowrowrow')"
         >
           修改
-        </el-tag>
+        </el-button>
       </template>
     </el-table-column>
   </TableView>

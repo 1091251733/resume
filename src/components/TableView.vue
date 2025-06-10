@@ -112,15 +112,22 @@ defineExpose({
       :prop="column.prop"
       :label="column.label"
       :width="column.width"
+      :min-width="column.minWidth"
       :show-overflow-tooltip="column.showOverflowTooltip"
     >
       <template #default="scope">
         <!-- 如果有 render 函数，使用自定义渲染；否则显示原始值 -->
-        {{
+        <el-tag
+          v-if="column.render && column?.render(scope.row[column.prop])?.isTag"
+          :type="column.render(scope.row[column.prop]).type"
+        >
+          {{ column.render(scope.row[column.prop]).content }}
+        </el-tag>
+        <span v-else>{{
           column.render
             ? column.render(scope.row[column.prop])
             : scope.row[column.prop]
-        }}
+        }}</span>
       </template>
     </el-table-column>
   </el-table>
