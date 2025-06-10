@@ -151,11 +151,13 @@ const resetForm = (val) => {
   <TableView
     ref="TableDom"
     :date="{
-      multiplechoice: '单选',
+      maxHeight: '30vh',
+      multiplechoice: '多选', //多选 / 单选
       headerTbale,
       border: true,
       api: queryOrderList,
       apiState: {
+        //默认值
         id: '1',
       },
     }"

@@ -8,7 +8,6 @@
  *
  */
 import { reactive, onMounted, ref } from "vue";
-import { headerTbale } from "@/store/tableDate";
 import { useWindowWidth } from "@/store/utiles";
 import zhCn from "element-plus/es/locale/lang/zh-cn";
 let props = defineProps(["date"]); //接收父组件传来的数据
@@ -46,6 +45,7 @@ const getList = (type, state) => {
       ? {
           pageNum: 1,
           pageSize: 10,
+          ...props?.date?.apiState,
         }
       : {
           pageNum: information.page,
@@ -107,7 +107,7 @@ defineExpose({
     <slot></slot>
     <!-- 动态生成列 -->
     <el-table-column
-      v-for="column in headerTbale"
+      v-for="column in props?.date?.headerTbale"
       :key="column.prop"
       :prop="column.prop"
       :label="column.label"

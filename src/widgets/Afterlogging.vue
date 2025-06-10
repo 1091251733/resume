@@ -4,6 +4,7 @@ import Menu from "@/components/Menu.vue";
 import { useBeginStore } from "@/store/contextmodel";
 import Leftsidepopup from "@/components/Leftsidepopup.vue";
 import { goFullScreen, exitFullScreen, useWindowWidth } from "@/store/utiles";
+
 const beginStore = useBeginStore(); //本地存储
 const windowWidth = useWindowWidth(); //监听页面宽度
 const LeftsidepopupDom = ref(null);

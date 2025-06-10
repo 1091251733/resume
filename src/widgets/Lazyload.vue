@@ -1,5 +1,8 @@
 <template>
-  <div>
+  <!-- loading加载 -->
+  <div
+    class="fixed w-full h-full bg-[#00000067] z-[999] flex justify-center items-center"
+  >
     <div class="loading42"></div>
   </div>
 </template>
