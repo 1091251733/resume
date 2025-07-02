@@ -5,6 +5,7 @@
  * headerTbale     表格标题数据
  * multiplechoice  表格多选与单选配置
  * apiState        后端需要的默认值
+ * dataList:[]     直接传递表格内容(如果传递了apiState就不用传递)
  *
  */
 import { reactive, onMounted, ref } from "vue";
@@ -54,13 +55,18 @@ const getList = (type, state) => {
           ...information.demandDate,
         };
   information.loadingtype = true;
-  props?.date?.api(apidate).then((result) => {
+  if (props?.date?.api) {
+    props?.date?.api(apidate).then((result) => {
+      information.loadingtype = false;
+      if (result.code == 200) {
+        information.tableData = result?.data?.rows;
+        information.total = result?.data?.total;
+      }
+    });
+  } else {
+    information.tableData = props?.date?.dataList;
     information.loadingtype = false;
-    if (result.code == 200) {
-      information.tableData = result?.data?.rows;
-      information.total = result?.data?.total;
-    }
-  });
+  }
 };
 const handleSizeChange = (value) => {
   //点击切换每页多少条
@@ -131,7 +137,7 @@ defineExpose({
       </template>
     </el-table-column>
   </el-table>
-  <el-config-provider :locale="zhCn">
+  <el-config-provider v-if="props?.date?.api" :locale="zhCn">
     <div class="flex justify-center mt-[30px]">
       <el-pagination
         v-model:current-page="information.page"
