@@ -1,0 +1,18 @@
+.ant-menu-item {
+  color: white !important;
+}
+.ant-menu-submenu-title {
+  color: white !important;
+}
+.ant-menu-item-selected {
+  background-color: #f1f0ff !important;
+  border-radius: 0px;
+  color: #453bc8 !important;
+  border-left: 4px solid #695dff;
+  display: flex;
+  align-items: center;
+}
+.ant-menu-item-active {
+  border-radius: 0px;
+  color: #2773f2 !important;
+}
