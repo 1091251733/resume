@@ -108,7 +108,7 @@ const Afterlogging = () => {
                       onClick={() => {}}
                       className="logOff h-[20px] cursor-pointer hover:text-[red]"
                     >
-                      <FormOutlined /> 个人信息
+                      <FormOutlined /> 个人信息 12354
                     </p>
                   </div>
                   <div className="px-1 py-1">

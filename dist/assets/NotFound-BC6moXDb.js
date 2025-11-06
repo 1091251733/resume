@@ -1,1 +1,0 @@
-import{j as e}from"./index-niHB1bKS.js";function l(){return e.jsxs("div",{className:"overflow-hidden text-[26px] w-full h-full flex flex-col justify-center items-center ",children:[e.jsx("div",{className:"font_24_fourzero","data-text":"404",children:"404"}),e.jsx("h1",{children:" - _ - 页面未找到"}),e.jsx("p",{children:"您访问的页面不存在 ❗"})]})}export{l as default};
