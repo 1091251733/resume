@@ -11,6 +11,7 @@
   width: 5px; /* 设置滑块宽度为10像素 */
   background-color: #aca8a8;
   border-radius: 50px;
+
   height: 5px;
 }
 ::-webkit-scrollbar {
