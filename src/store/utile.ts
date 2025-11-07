@@ -101,67 +101,6 @@ export function useWindowWidth() {
   return width;
 }
 
-//登录背景
-export const loginBg = () => {
-  const elems: NodeListOf<HTMLElement> =
-    document.querySelectorAll(".laya-please");
-  const layer3 = document.querySelector(".layer-3") as HTMLElement;
-  const layer4 = document.querySelector(".layer-4") as HTMLElement;
-  const layer5 = document.querySelector(".layer-5") as HTMLElement;
-  const layer6 = document.querySelector(".layer-6") as HTMLElement;
-  const layer7 = document.querySelector(".layer-7") as HTMLElement;
-  const layer8 = document.querySelector(".layer-8") as HTMLElement;
-
-  setTimeout(() => {
-    elems.forEach((elem) => {
-      elem.style.animation = "none";
-    });
-  }, 1500);
-
-  document.body.addEventListener("mousemove", (e: MouseEvent) => {
-    const target = e.currentTarget as HTMLElement;
-    if (!target.dataset.triggered) {
-      elems.forEach((elem) => {
-        if (elem.getAttribute("style")) {
-          elem.style.transition = "all .5s";
-          elem.style.transform = "none";
-        }
-      });
-    }
-    target.dataset.triggered = "true";
-
-    const width = window.innerWidth / 2;
-    const mouseMoved2 = (width - e.pageX) / 50;
-    const mouseMoved3 = (width - e.pageX) / 40;
-    const mouseMoved4 = (width - e.pageX) / 30;
-    const mouseMoved5 = (width - e.pageX) / 20;
-    const mouseMoved6 = (width - e.pageX) / 10;
-    const mouseMoved7 = (width - e.pageX) / 5;
-
-    if (layer3) layer3.style.transform = `translateX(${mouseMoved2}px)`;
-    if (layer4) layer4.style.transform = `translateX(${mouseMoved3}px)`;
-    if (layer5) layer5.style.transform = `translateX(${mouseMoved4}px)`;
-    if (layer6) layer6.style.transform = `translateX(${mouseMoved5}px)`;
-    if (layer7) layer7.style.transform = `translateX(${mouseMoved6}px)`;
-    if (layer8) layer8.style.transform = `translateX(${mouseMoved7}px)`;
-  });
-
-  document.body.addEventListener("mouseleave", () => {
-    elems.forEach((elem) => {
-      elem.style.transition = "all .5s";
-      elem.style.transform = "none";
-    });
-  });
-
-  document.body.addEventListener("mouseenter", () => {
-    elems.forEach((elem) => {
-      setTimeout(() => {
-        elem.style.transition = "none";
-      }, 500);
-    });
-  });
-};
-
 export function formatTimeAgo(time: string): string {
   //计算多少时间前  比如 time参数值：几天前几小时前  时间格式：2025-06-29 08:00:00
   const num = dayjs().diff(dayjs(time), "minute");

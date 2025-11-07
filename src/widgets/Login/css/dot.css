@@ -9,7 +9,6 @@
   height: 100vh;
   top: 0;
   left: 0;
-  background: #3e1e68;
   overflow: hidden;
 }
 .background strong {
@@ -202,4 +201,58 @@
   animation-delay: -15s;
   transform-origin: -12vw 7vh;
   box-shadow: 40vmin 0 5.26114602vmin currentColor;
+}
+
+/* /////////////卡片////////////// */
+.my_card {
+  aspect-ratio: 3 / 2;
+  border: 3px solid;
+  background-color: #fff;
+  position: relative;
+  transition: 0.15s ease;
+  padding: 5%;
+  &:before,
+  &:after {
+    content: "";
+    display: block;
+    position: absolute;
+    height: 100%;
+    width: 100%;
+    border: 3px solid;
+    background-color: #fff;
+    transform-origin: center center;
+    z-index: -1;
+    top: 0;
+    left: 0;
+  }
+
+  &:before {
+    transform: translatey(-2%) rotate(-6deg);
+  }
+
+  &:after {
+    transform: translatey(2%) rotate(6deg);
+  }
+}
+.my_image {
+  width: 100%;
+  border: 3px solid;
+  background-color: #eee;
+  aspect-ratio: 1 / 1;
+}
+/* /////////////////////////////////////// */
+.text71 {
+  font-weight: 600;
+  color: transparent;
+  text-align: center;
+  letter-spacing: 4px;
+  background: linear-gradient(to right, #000 0, #ffff00 33%, #000 40%);
+  background-position: -32px 0;
+  -webkit-background-clip: text;
+  animation: eff71 4s linear infinite;
+}
+@keyframes eff71 {
+  to {
+    background-position: 130px 0;
+  }
 }
