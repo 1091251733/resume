@@ -62,7 +62,7 @@ export default function LoginRegistration() {
         >
           <div className="my_card">
             <div className="my_image">
-              <p className="text71 my-[20px] text-2xl">热烈的吻</p>
+              <p className="text71 my-[20px] text-2xl">欢迎访问我的顶部</p>
             </div>
           </div>
         </div>
