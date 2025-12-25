@@ -4,6 +4,7 @@ export const headerTbale = [
   {
     prop: "username",
     label: "名字",
+
   },
   {
     prop: "integralId",

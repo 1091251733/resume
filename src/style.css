@@ -5,28 +5,7 @@
   margin: 0;
   padding: 0;
 }
-
-/* 适配手机端的日期范围选择器 */
-@media screen and (max-width: 768px) {
-  /* 3. 特别处理日期范围选择器 */
-  .el-date-range-picker {
-    width: 96vw !important;
-    max-width: 96vw !important;
-  }
-  /* 4. 调整内部表格布局 */
-  .el-date-range-picker__content {
-    width: 76% !important;
-  }
-
-  /* 6. 隐藏不需要的边距 */
-  .el-picker-panel__sidebar {
-    display: none !important;
-  }
-
-  /* 7. 防止内容溢出 */
-  .el-picker-panel__body-wrapper,
-  .el-picker-panel__body {
-    overflow: hidden !important;
-    max-width: 100% !important;
-  }
+ul {
+  list-style-type: circle; /* 默认的小圆点 */
+  padding-left: 20px;
 }
