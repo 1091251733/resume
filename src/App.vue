@@ -1,17 +1,25 @@
 <template>
-  <div class="w-full max-w-[800px] p-5 mx-auto flex flex-col md:shadow-2xl">
+  <div
+    class="w-full max-w-[800px] p-5 mx-auto flex flex-col md:shadow-2xl overflow-hidden"
+  >
     <NImage
-      class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-full mx-auto mb-5"
+      class="w-[100px] h-[100px] md:w-[150px] md:h-[150px] rounded-full mx-auto mb-5 fade_InDown"
       :src="getImageUrl(userInfo.avatar)"
       lazy
     />
-    <div class="text-3xl font-bold text-center pb-2">{{ userInfo.name }}</div>
-    <div class="text-sm opacity-60 font-normal text-grey text-center pb-4">
+    <div class="text-3xl font-bold text-center pb-2 fade_InDown">
+      {{ userInfo.name }}
+    </div>
+    <div
+      class="text-sm opacity-60 font-normal text-grey text-center pb-4 fade_InDown"
+    >
       {{ userInfo.job }}
     </div>
 
     <!-- info -->
-    <div class="flex justify-center flex-wrap gap-x-6 gap-y-1 mb-7">
+    <div
+      class="flex justify-center flex-wrap gap-x-6 gap-y-1 mb-7 fadeIn_Right"
+    >
       <div
         class="flex justify-space text-sm"
         v-for="(item, index) in userInfo.infoList"
@@ -21,23 +29,29 @@
         <span>{{ item.value }}</span>
       </div>
     </div>
-
-    <div class="text-lg font-bold mb-4">工作经验</div>
-    <div
-      class="text-sm"
-      v-for="(item, index) in userInfo.employmentList"
-      :key="index"
-    >
-      <div class="flex justify-between pb-2">
-        <div>{{ item.startDate }} ~ {{ item.endDate }}</div>
-        <strong>{{ item.title }}</strong>
-      </div>
-      <div class="text-gray-500 mb-2" v-for="(v, i) in item.value" :key="i">
-        {{ v }}
+    <div class="fadeInLeft">
+      <div class="text-lg font-bold mb-4 text71">工作经验</div>
+      <div
+        class="text-sm"
+        v-for="(item, index) in userInfo.employmentList"
+        :key="index"
+      >
+        <div class="flex justify-between pb-2">
+          <div>{{ item.startDate }} ~ {{ item.endDate }}</div>
+          <strong>{{ item.title }}</strong>
+        </div>
+        <div class="text-gray-500 mb-2" v-for="(v, i) in item.value" :key="i">
+          {{ v }}
+        </div>
       </div>
     </div>
-
-    <div class="text-lg font-bold mb-4 mt-7">技能特长</div>
+    <div className="loading17 text-lg font-bold mb-4 mt-7 ">
+      <span className="load-span17">技</span>
+      <span className="load-span17">能</span>
+      <span className="load-span17">特</span>
+      <span className="load-span17">长</span>
+    </div>
+    <!-- <div class="text-lg font-bold mb-4 mt-7">技能特长</div> -->
     <ul
       class="text-sm text-gray-500 mb-2"
       v-for="(item, index) in userInfo.skillExpertise"
@@ -162,7 +176,7 @@ const userInfo = ref({
     },
   ],
   skillExpertise: [
-    '1. 熟练使用主流框架及自动化构建工具 <span class="font-bold text-black">Vue2/3、React、Electron、Jquery、Uniapp、Vite、Webpack</span>',
+    '1. 熟练使用主流框架及自动化构建工具 <span class="font-bold text-black">Vue2/3、React、Electron、Jquery、Uniapp。Vite、Webpack</span>',
     '2. 熟练使用主流UI库 <span class="font-bold text-black">HeroUI、HiUIDesign、Vant、AntDesign/Mobile、uView、uCharts、ECharts、ElementUI、NaiveUI</span>',
     "3. 对组件化、脚手架开发有着组合丰富的 项目经验，模块化开发以及代码封装思想。",
     '状态管理库：<span class="font-bold text-black">Zustand</span>、Vuex、Pinia',
@@ -448,10 +462,6 @@ OA管理；仓库管理；商品管理；CRM管理；销售管理(对销售订�
         {
           cdn: "",
           local: "/tianma/9.png",
-        },
-        {
-          cdn: "",
-          local: "/tianma/10.png",
         },
       ],
     },
