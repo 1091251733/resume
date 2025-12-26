@@ -41,7 +41,7 @@ export const userInfo = {
   ],
   skillExpertise: [
     '1. 熟练使用主流框架及自动化构建工具 <span class="font-bold text-black">Vue2/3、React、Electron、Jquery、Uniapp。Vite、Webpack</span>',
-    '2. 熟练使用主流UI库 <span class="font-bold text-black">HeroUI、HiUIDesign、Vant、AntDesign/Mobile、uView、uCharts、ECharts、ElementUI、NaiveUI</span>',
+    '2. 熟练使用主流UI库 <span class="font-bold text-black">HeroUI、HiUIDesign、Vant、AntDesign/Mobile、uView、uCharts、ECharts、AntV、GIS、ElementUI、Vuetify、NaiveUI</span>',
     "3. 对组件化、脚手架开发有着组合丰富的 项目经验，模块化开发以及代码封装思想。",
     '状态管理库：<span class="font-bold text-black">Zustand</span>、Vuex、Pinia',
     '4. 掌握多种后台交互技术，熟练使用Axios、Fetch、Request、Ajax、<span class="font-bold text-black">SSE、WebSocket</span>请求数据；',
@@ -50,7 +50,8 @@ export const userInfo = {
     "7. 掌握JavaScript/TypeScript开发，熟悉JS封装、类、原型链、闭包等代码的编写；",
     '8. 熟悉Less、Sass的Css预处理器，<span class="font-bold text-black">Tailwind CSS、Framer-motion</span>、Animatopy，能够实现Css代码优化可读性强、增强界面交互；',
     "9. 熟练原生小程序及App、H5多端开发。以及响应式页面开发",
-    "10. 了解 Node.js开发，能够使用Node js和 Express实现服务器端功能,数据库的操作及其 增、删、改、查等基本代码的编写",
+    "10. 了解 Node.js开发，能够使用Node js和 Express实现服务器端功能",
+    '11. 了解MongoDB、MySQL，数据库及其 增、删、改、查等基本操作'
   ],
   projectExperienceList: [
     {
@@ -68,7 +69,7 @@ OA管理；仓库管理；商品管理；CRM管理；销售管理(对销售订�
         "负责ERP生产，商品，采购，仓库，销售，账号管理，OA等模块开发",
       ],
       techStack:
-        "React、Tailwindcss、Zustand、WebSocket、TypeScript、React-Router、Vite、Fetch、AntDesign、HeroUI",
+        "React、Tailwindcss、Zustand、WebSocket、TypeScript、React-Router、Vite、Fetch、AntDesign、HeroUI、Framer-motion、Markdown、Dlayer",
       imageList: [
         {
           cdn: "https://img.meituan.net/portalweb/7dff236761d6249bfb4f405db6c59a4f213265.png",
@@ -181,7 +182,7 @@ OA管理；仓库管理；商品管理；CRM管理；销售管理(对销售订�
         "插件搜索功能、AI聊天开发",
       ],
       techStack:
-        "React、Cocos、Vite、TypeScript、Zustand、Dayjs、SSE、framer-motion、Immer。NextUI、AntDesign、Tailwindcss、Highlighter",
+        "React、Cocos、Vite、TypeScript、Zustand、Dayjs、SSE、Framer-motion、Immer。NextUI、AntDesign、Tailwindcss、Highlighter",
       webImageList: [
         {
           cdn: "https://img.meituan.net/portalweb/409f74a70bc04669977df77264660360173161.png",
@@ -238,7 +239,7 @@ OA管理；仓库管理；商品管理；CRM管理；销售管理(对销售订�
       summary: `企业级代理IP服务商，全方位大数据采集，HTTP/HTTPS/SOCKS5/隧道代理/动态IP/固态IP`,
       dutiesList: ["负责整个项目前端开发、后期维护迭代"],
       techStack:
-        "React、Vite、TypeScript、Autofit、Zustand、Dayjs、Immer。Heroui、Framer-motion、Tailwindcss、Sweetalert2",
+        "React、Vite、TypeScript、Autofit、Zustand。Heroui、Framer-motion、Tailwindcss、Sweetalert2",
       webImageList: [
         {
           cdn: "https://img.meituan.net/portalweb/c9df6798c8452890d3564350c82c4ec7129690.png",
@@ -284,7 +285,7 @@ OA管理；仓库管理；商品管理；CRM管理；销售管理(对销售订�
       summary: `提供企业内部与客户聊天系统`,
       dutiesList: ["负责整个项目前端开发、后期维护迭代"],
       techStack:
-        "React、Vite、TypeScript、Autofit、Zustand、Dayjs、Immer。Heroui、Framer-motion、Tailwindcss、Sweetalert2",
+        "React、Vite、TypeScript、WebSocket、Autofit、Zustand、Dayjs。Heroui、Framer-motion、Tailwindcss、Sweetalert2、Mescroll",
 
       h5ImageList: [
         {
@@ -383,7 +384,7 @@ OA管理；仓库管理；商品管理；CRM管理；销售管理(对销售订�
       project: "慕映影视（H5、后台系统）",
       summary: `这是一个帮助影迷发现和管理影视作品的智能工具。它不仅能根据你的喜好推荐剧集，还能让你轻松记录“在看”、“想看”和“已看”的片单，并管理自己的观看进度。
       类似于腾讯视频的视频播放软件。项目主要模块有首页（视频分类，视频筛选，视频搜索等），短视频，VIP会员，个人中心等`,
-      dutiesList: ["负责整个项目前端开发"],
+      dutiesList: ["负责整个项目前端开发", '视频适配(M3u8、MP4、MKV、WebM'],
       techStack:
         "Dlayer、Mescroll、React、Vite、TypeScript、Zustand、Heroui、Tailwindcss",
       webImageList: [
