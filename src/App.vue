@@ -9,7 +9,7 @@
     />
     <div class="text-3xl font-bold text-center pb-2 fade_InDown">
       {{ userInfo.name }}
-    </div>
+    </div> 
     <div
       class="text-sm opacity-60 font-normal text-grey text-center pb-4 fade_InDown"
     >
