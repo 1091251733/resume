@@ -507,12 +507,12 @@ OA管理；仓库管理；商品管理；CRM管理；销售管理(对销售订�
       dutiesList: ["整个项目开发、部署上线"],
       techStack:
         "TSX、TailwindCss、Heroui",
-      h5ImageList: [
-        {
-          cdn: "",
-          local: "",
-        },
-      ],
+      // h5ImageList: [
+      //   {
+      //     cdn: "",
+      //     local: "",
+      //   },
+      // ],
     },
     {
       project: "3D小游戏（H5、Pc）",
@@ -521,12 +521,12 @@ OA管理；仓库管理；商品管理；CRM管理；销售管理(对销售订�
       dutiesList: ["整个项目开发、部署上线"],
       techStack:
         "HTML、JavaScript、Therejs",
-      h5ImageList: [
-        {
-          cdn: "",
-          local: "",
-        },
-      ],
+      // h5ImageList: [
+      //   {
+      //     cdn: "",
+      //     local: "",
+      //   },
+      // ],
     },
     {
       project: "新年推流小应用（H5）",
